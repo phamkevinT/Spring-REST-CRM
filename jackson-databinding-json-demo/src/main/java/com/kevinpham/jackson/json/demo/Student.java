@@ -1,5 +1,9 @@
 package com.kevinpham.jackson.json.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+// Doesn't throw an exception for unimplemented JSON properties
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Student {
 	
 	private int id;

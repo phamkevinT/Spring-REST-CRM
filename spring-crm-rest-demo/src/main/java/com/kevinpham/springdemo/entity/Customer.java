@@ -1,5 +1,11 @@
 package com.kevinpham.springdemo.entity;
 
+/**
+ * 
+ * Entity Class -> Map a Java Class to a Database Table
+ * 
+ */
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,5 +1,11 @@
 package com.kevinpham.springdemo.service;
 
+/**
+ * 
+ * 		Delegates calls from CustomerService to CustomerDAO
+ * 
+ */
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +21,14 @@ public class CustomerServiceImpl implements CustomerService {
 	// need to inject customer dao
 	@Autowired
 	private CustomerDAO customerDAO;
-	
+
 	@Override
 	@Transactional
 	public List<Customer> getCustomers() {
 		return customerDAO.getCustomers();
 	}
 
+	
 	@Override
 	@Transactional
 	public void saveCustomer(Customer theCustomer) {
@@ -29,22 +36,19 @@ public class CustomerServiceImpl implements CustomerService {
 		customerDAO.saveCustomer(theCustomer);
 	}
 
+	
 	@Override
 	@Transactional
 	public Customer getCustomer(int theId) {
-		
+
 		return customerDAO.getCustomer(theId);
 	}
 
+	
 	@Override
 	@Transactional
 	public void deleteCustomer(int theId) {
-		
+
 		customerDAO.deleteCustomer(theId);
 	}
 }
-
-
-
-
-

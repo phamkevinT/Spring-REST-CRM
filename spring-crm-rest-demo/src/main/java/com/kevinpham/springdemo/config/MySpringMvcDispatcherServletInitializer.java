@@ -1,7 +1,9 @@
 package com.kevinpham.springdemo.config;
 
 /**
+ * 
  * 		File for All Java Configuration (No XML)
+ * 
  */
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;

@@ -1,5 +1,11 @@
 package com.kevinpham.springdemo.service;
 
+/**
+ * 
+ * 		Customer Service talks to our backend, Customer DAO
+ * 			- Delegates calls from Customer Service to Customer DAO
+ */
+
 import java.util.List;
 
 import com.kevinpham.springdemo.entity.Customer;

@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.luv2code.springdemo</groupId>
+	<groupId>com.kevinpham.springdemo</groupId>
 	<artifactId>spring-crm-rest</artifactId>
 	<version>1.0.0</version>
 	<packaging>war</packaging>
@@ -20,23 +20,28 @@
 	<dependencies>
 
 		<!-- Spring -->
+		
+		<!-- Spring Web MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
 
+		<!-- Spring Transaction (for Hibernate) -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
 		
+		<!-- Spring ORM (spring supporting classes for Hibernate) -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
+
 
 		<!-- Add Jackson for JSON converters -->
 		<dependency>
@@ -45,28 +50,32 @@
 			<version>2.9.5</version>
 		</dependency>
 
-		<!-- Hibernate -->
+
+		<!-- Hibernate (Mapping tool to database) -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- MySQL -->
+
+		<!-- MySQL (Database) -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.connector.version}</version>
 		</dependency>
 
-		<!-- C3PO -->
+
+		<!-- C3PO (Connection Pooling Framework - Manages database connections)-->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
 			<version>${c3po.version}</version>
 		</dependency>
 
-		<!-- Servlet+JSP+JSTL -->
+
+		<!-- Servlet + JSP (APIs) -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -79,14 +88,9 @@
 			<version>2.3.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
 
 
-		<!-- to compensate for java 9 not including jaxb -->
+		<!-- to compensate for java 9+ not including jaxb -->
 		<dependency>
 		    <groupId>javax.xml.bind</groupId>
 		    <artifactId>jaxb-api</artifactId>

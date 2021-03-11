@@ -1,4 +1,8 @@
-package com.luv2code.springdemo.config;
+package com.kevinpham.springdemo.config;
+
+/**
+ * 		File for All Java Configuration (No XML)
+ */
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -21,9 +25,3 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 	}
 
 }
-
-
-
-
-
-

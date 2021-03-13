@@ -17,6 +17,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	
+	/**
+	 * Get list of customers from database
+	 */
 	@Override
 	public List<Customer> getCustomers() {
 
@@ -34,6 +38,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	
+	/**
+	 * Save or update customer to database
+	 */
 	@Override
 	public void saveCustomer(Customer theCustomer) {
 
@@ -45,6 +52,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 	
 
+	/**
+	 * Get a single customer based on ID
+	 */
 	@Override
 	public Customer getCustomer(int theId) {
 
@@ -58,6 +68,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	
+	/**
+	 * Delete a customer based on ID
+	 */
 	@Override
 	public void deleteCustomer(int theId) {
 

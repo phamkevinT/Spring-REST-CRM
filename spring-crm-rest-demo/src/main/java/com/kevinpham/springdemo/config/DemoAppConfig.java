@@ -31,6 +31,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 @PropertySource({ "classpath:persistence-mysql.properties" })
 public class DemoAppConfig implements WebMvcConfigurer {
 
+	// Properties from "persistence-mysql.properties"
 	@Autowired
 	private Environment env;
 
@@ -49,7 +50,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 			throw new RuntimeException(exc);
 		}
 
-		// log url and user just to make sure we are reading the data
+		// [OPTIONAL] log url and user just to make sure we are reading the data
 		logger.info("jdbc.url=" + env.getProperty("jdbc.url"));
 		logger.info("jdbc.user=" + env.getProperty("jdbc.user"));
 
@@ -67,10 +68,9 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		return myDataSource;
 	}
 
-	
 	private Properties getHibernateProperties() {
 
-		// set hibernate properties
+		// set Hibernate properties
 		Properties props = new Properties();
 
 		props.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
@@ -79,7 +79,6 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		return props;
 	}
 
-	
 	// need a helper method
 	// read environment property and convert to int
 	private int getIntProperty(String propName) {
@@ -92,7 +91,6 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		return intPropVal;
 	}
 
-	
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 
@@ -107,7 +105,6 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		return sessionFactory;
 	}
 
-	
 	@Bean
 	@Autowired
 	public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {

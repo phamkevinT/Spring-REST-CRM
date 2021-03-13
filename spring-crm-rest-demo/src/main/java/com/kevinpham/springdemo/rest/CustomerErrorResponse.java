@@ -2,18 +2,18 @@ package com.kevinpham.springdemo.rest;
 
 /**
  * 
- *	CustomerErrorResponse to create JSON body
+ * Custom CustomerErrorResponse to create JSON body
  *
  */
 
 public class CustomerErrorResponse {
-	
+
 	private int status;
 	private String message;
 	private long timeStamp;
-	
+
 	public CustomerErrorResponse() {
-		
+
 	}
 
 	public CustomerErrorResponse(int status, String message, long timeStamp) {
@@ -46,5 +46,5 @@ public class CustomerErrorResponse {
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
-	
+
 }

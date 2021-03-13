@@ -8,29 +8,34 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CustomerRestExceptionHandler {
 
-	// Exception handler for CustomerNotFoundException
+	/**
+	 * Exception handler for CustomerNotFoundException
+	 * 
+	 * @param exc the exception
+	 * @return the response
+	 */
 	@ExceptionHandler
 	public ResponseEntity<CustomerErrorResponse> handleException(CustomerNotFoundException exc) {
 
 		// create CustomerErrorResponse (NOT_FOUND = 404 Error)
-		CustomerErrorResponse error = new CustomerErrorResponse(
-				HttpStatus.NOT_FOUND.value(), 
-				exc.getMessage(),
+		CustomerErrorResponse error = new CustomerErrorResponse(HttpStatus.NOT_FOUND.value(), exc.getMessage(),
 				System.currentTimeMillis());
 
 		// return ResponseEntity
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
-	
-	// Exception handler for all other exceptions (catch all)
+	/**
+	 * Exception handler for all other exceptions (catch all)
+	 * 
+	 * @param exc the exception
+	 * @return the response
+	 */
 	@ExceptionHandler
 	public ResponseEntity<CustomerErrorResponse> handleException(Exception exc) {
 
 		// create CustomerErrorResponse (BAD_REQUEST = 400 Error)
-		CustomerErrorResponse error = new CustomerErrorResponse(
-				HttpStatus.BAD_REQUEST.value(), 
-				exc.getMessage(),
+		CustomerErrorResponse error = new CustomerErrorResponse(HttpStatus.BAD_REQUEST.value(), exc.getMessage(),
 				System.currentTimeMillis());
 
 		// return ResponseEntity

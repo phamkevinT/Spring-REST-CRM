@@ -1,10 +1,12 @@
 # Spring-REST-CRM
-
-Spring REST - Create, Read, Update, Delete (CRUD) Database Customer-Relationship-Management (CRM) Web Application utilizing Spring MVC and Hibernate
+Spring Web App REST Client that communicates with the CRM REST API. <br>
+Create, Read, Update, Delete (CRUD) Database Customer-Relationship-Management (CRM) Web Application utilizing Spring MVC and Hibernate
 
 ## The Big Picture
+![Image of Project Overview](https://i.imgur.com/grlzAaU.png)
 
-![Image of Project Overview](https://i.imgur.com/vGdKqHi.png)
+
+## HTTP Methods
 ![HTTP Methods and CRUD Actions](https://i.imgur.com/j3kQNPz.png)
 
 

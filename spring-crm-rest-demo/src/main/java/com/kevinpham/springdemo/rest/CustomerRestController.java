@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,10 +57,20 @@ public class CustomerRestController {
 		// This forces a save of new item ... instead of updating
 		theCustomer.setId(0);
 		
-		// Use @RequestBody to access the request body as a POJO and delegate task to CustomerService
+		// Use @RequestBody to access the request body as a POJO and delegate call to CustomerService
 		customerService.saveCustomer(theCustomer);
 		
 		return theCustomer;
 	}
 
+	
+	// mapping for PUT /customers -> Update an existing customer
+	@PutMapping("/customers")
+	public Customer updateCustomer(@RequestBody Customer theCustomer) {
+		
+		// Delegate call to CustomerService
+		customerService.saveCustomer(theCustomer);
+		
+		return theCustomer;
+	}
 }

@@ -19,24 +19,28 @@ public class CustomerRestController {
 	@Autowired
 	private CustomerService customerService;
 
-	
 	// mapping for GET /customers -> Get all customers
 	@GetMapping("/customers")
 	public List<Customer> getCustomers() {
-		
+
 		// delegate the task to CustomerService
 		return customerService.getCustomers();
 	}
 
-	
 	// mapping for GET /customer/{customerId} -> Get a single customer by their ID
 	@GetMapping("/customers/{customerId}")
 	public Customer getCustomers(@PathVariable int customerId) {
-		
+
 		// delegate the task to CustomerService
 		Customer theCustomer = customerService.getCustomer(customerId);
-		
+
+		// Jackson will return null JSON if not found.
+		// If so, throw an exception
+		if (theCustomer == null) {
+			throw new CustomerNotFoundException("Customer id not found - " + customerId);
+		}
+
 		return theCustomer;
 	}
-	
+
 }

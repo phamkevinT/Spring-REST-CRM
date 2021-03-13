@@ -22,6 +22,7 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 
 	private Logger logger = Logger.getLogger(getClass().getName());
 
+	// Constructor injection of @Value("${crm.rest.url}")
 	@Autowired
 	public CustomerServiceRestClientImpl(RestTemplate theRestTemplate, @Value("${crm.rest.url}") String theUrl) {
 		restTemplate = theRestTemplate;
@@ -30,13 +31,24 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 		logger.info("Loaded property:  crm.rest.url=" + crmRestUrl);
 	}
 
+	/**
+	 * Gets all customers from database
+	 * 
+	 * GET /api/customers
+	 * 
+	 * restTemplate.exhance( theURL, the HTTP method, requestEntity - additional
+	 * request headers - our case null, responseType - type of return value
+	 */
 	@Override
 	public List<Customer> getCustomers() {
 
 		logger.info("in getCustomers(): Calling REST API " + crmRestUrl);
 
 		// make REST call
-		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(crmRestUrl, HttpMethod.GET, null,
+		ResponseEntity<List<Customer>> responseEntity = restTemplate.exchange(
+				crmRestUrl, 
+				HttpMethod.GET, 
+				null,
 				new ParameterizedTypeReference<List<Customer>>() {
 				});
 
@@ -48,6 +60,11 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 		return customers;
 	}
 
+	/**
+	 * Get a single customer based on ID
+	 * 
+	 * GET /api/customers/{customerId}
+	 */
 	@Override
 	public Customer getCustomer(int theId) {
 
@@ -60,7 +77,13 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 
 		return theCustomer;
 	}
-
+	
+	
+	/**
+	 * Update customer
+	 * 
+	 * POST /api/customers
+	 */
 	@Override
 	public void saveCustomer(Customer theCustomer) {
 
@@ -81,6 +104,12 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 		logger.info("in saveCustomer(): success");
 	}
 
+	
+	/**
+	 * Delete a customer based on ID
+	 * 
+	 * DELETE /api/customers/{customerId}
+	 */
 	@Override
 	public void deleteCustomer(int theId) {
 

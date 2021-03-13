@@ -17,41 +17,32 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @PropertySource({ "classpath:application.properties" })
 public class DemoAppConfig implements WebMvcConfigurer {
 
-	// define a bean for ViewResolver
-
+	// Bean for ViewResolver
 	@Bean
 	public ViewResolver viewResolver() {
-		
+
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		
+
+		// Directory for our JSP web pages
 		viewResolver.setPrefix("/WEB-INF/view/");
+		// Extension of our JSP web pages
 		viewResolver.setSuffix(".jsp");
-		
+
 		return viewResolver;
 	}
-	
-	// define bean for RestTemplate ... this is used to make client REST calls
-	
+
+	// Bean for RestTemplate (provided by Spring) ...
+	// This is used to make client REST calls
+	// Injected into the CustomerServiceRestClientImpl class
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
-	// add resource handler for loading css, images, etc
-	
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-          .addResourceHandler("/resources/**")
-          .addResourceLocations("/resources/"); 
-    }	
+
+	// Resource handler for loading css, images, etc in the Deployed
+	// Resources/webapp/resources/...
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
 }
-
-
-
-
-
-
-
-
-
